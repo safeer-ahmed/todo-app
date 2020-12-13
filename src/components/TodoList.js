@@ -28,24 +28,18 @@ export default function TodoList(props) {
 
 const styles = StyleSheet.create({
   listTile: {
-    width: "100%",
-    display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "white",
+    width: "100%",
     padding: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: "#666666"
+    borderBottomColor: "#666666",
   },
-  leading: {
-    width: "20%"
-  },
+  leading: {},
   title: {
-    width: "60%",
-    fontSize: 18
+    flex: 1,
+    marginStart: 8,
+    marginEnd: 8,
+    fontSize: 18,
   },
-  trailing: {
-    width: "20%"
-  }
+  trailing: {},
 });

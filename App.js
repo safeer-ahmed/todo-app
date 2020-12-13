@@ -5,10 +5,9 @@ import {
   TextInput,
   View,
   Button,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import AppBar from "./src/components/AppBar";
-import Todo from "./src/components/Todo";
 import TodoList from "./src/components/TodoList";
 
 export default function App() {
@@ -31,11 +30,11 @@ export default function App() {
   };
 
   // function to mark todo as checked or unchecked
-  const checkTodo = id => {
+  const checkTodo = (id) => {
     // loop through todo list and look for the the todo that matches the given id param
     // update the state using setTodos function
     setTodos(
-      todos.map(todo => {
+      todos.map((todo) => {
         if (todo.key === id) {
           todo.isChecked = !todo.isChecked;
         }
@@ -45,16 +44,18 @@ export default function App() {
   };
 
   // function to delete todo from the todo list
-  const deleteTodo = id => {
+  const deleteTodo = (id) => {
     // loop through todo list and return todos that don't match the id
     // update the state using setTodos function
-    setTodos(todos.filter(todo => {
-      return todo.key !== id;
-    }));
+    setTodos(
+      todos.filter((todo) => {
+        return todo.key !== id;
+      })
+    );
   };
 
   useEffect(() => {
-    console.log(todos.length, "TodoList length");
+    console.log("Length: ", todos.length);
     //console.log(todos);
   }, [todos]);
 
@@ -66,14 +67,18 @@ export default function App() {
         <TextInput
           placeholder="Add a todo"
           value={title}
-          onChangeText={value => setTitle(value)}
+          onChangeText={(value) => setTitle(value)}
           style={styles.textbox}
         />
         <Button title="Add" color="#7F39FB" onPress={() => addTodo()} />
       </View>
 
-      <ScrollView>
-        {todos.map(todo => (
+      <ScrollView
+        style={{
+          width: "100%",
+        }}
+      >
+        {todos.map((todo) => (
           <TodoList
             key={todo.key}
             todo={todo}
@@ -91,19 +96,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#7F39FB",
     color: "#fff",
     width: "100%",
-    height: 30
+    height: 30,
   },
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
   todo: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   textbox: {
     borderWidth: 1,
@@ -111,6 +116,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
     margin: 10,
-    width: "80%"
-  }
+    width: "80%",
+  },
 });
